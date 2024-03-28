@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\Api\UserController;
+use App\Http\Controllers\permissionController;
+use App\Http\Controllers\roleController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -25,3 +27,20 @@ Route::middleware('auth:api')->group(function () {
         Route::get('profile', [UserController::class,'profile']);
     Route::get('logout', [UserController::class,'logout']);
 });
+
+/* CREATE USER*/
+Route::post('/users', [userController::class, 'CreateUser']);
+
+/*ROLE*/
+Route::get('/roles', [RoleController::class, 'showRoles']);
+
+Route::post('/roles', [roleController::class, 'addRole']);
+
+Route::delete('/roles/{id}', [roleController::class, 'deleteRole']);
+
+/*CREATE PERMISSION*/
+Route::get('/permissions', [permissionController::class, 'showPermissions']);
+
+Route::post('/permissions', [permissionController::class, 'addPermission']);
+
+Route::delete('/permissions/{id}', [permissionController::class, 'deletePermission']);
