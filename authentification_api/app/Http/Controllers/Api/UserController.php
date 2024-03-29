@@ -11,8 +11,36 @@ use App\Http\Controllers\Controller;
 class UserController extends Controller
 {
     /**
-     * Store a newly created resource in storage.
+     * @OA\Post(
+     *     path="/api/register",
+     *     summary="Register a new user",
+     *     tags={"Authentication"},
+     *     @OA\Parameter(
+     *         name="name",
+     *         in="query",
+     *         description="User's name",
+     *         required=true,
+     *         @OA\Schema(type="string")
+     *     ),
+     *     @OA\Parameter(
+     *         name="email",
+     *         in="query",
+     *         description="User's email",
+     *         required=true,
+     *         @OA\Schema(type="string")
+     *     ),
+     *     @OA\Parameter(
+     *         name="password",
+     *         in="query",
+     *         description="User's password",
+     *         required=true,
+     *         @OA\Schema(type="string")
+     *     ),
+     *     @OA\Response(response="201", description="User registered successfully"),
+     *     @OA\Response(response="422", description="Validation errors")
+     * )
      */
+
     public function store(Request $request)
     {
         $request->validate([
@@ -30,6 +58,30 @@ class UserController extends Controller
         return response()->json(['user' => $user, 'message' => 'User created successfully'], 201);
     }
 
+    /**
+     * @OA\Post(
+     *     path="/api/login",
+     *     summary="Authenticate user and generate passport token",
+     *     @OA\Parameter(
+     *         name="email",
+     *         in="query",
+     *         description="User's email",
+     *         required=true,
+     *         @OA\Schema(type="string")
+     *     ),
+     *     @OA\Parameter(
+     *         name="password",
+     *         in="query",
+     *         description="User's password",
+     *         required=true,
+     *         @OA\Schema(type="string")
+     *     ),
+     *     tags={"Authentication"},
+     *     @OA\Response(response="200", description="Login successful"),
+     *     @OA\Response(response="401", description="Invalid credentials")
+     * )
+     */
+
     public function login(Request $request)
     {
         $request->validate([
@@ -41,7 +93,7 @@ class UserController extends Controller
             'email' => $request->email,
             'password' => $request->password,
         ])){
-            $user = Auth::user(); // Retrieve the authenticated user
+            $user = Auth::user();
 
             $token = $user->createToken('My Token')->accessToken;
             return response()->json([
@@ -69,6 +121,16 @@ class UserController extends Controller
         ]);
     }
 
+    /**
+     * @OA\Post(
+     *     path="/logout",
+     *     summary="Logout user",
+     *     tags={"Authentication"},
+     *     @OA\Response(response=200, description="Successful logout"),
+     *     @OA\Response(response=400, description="Invalid token")
+     * )
+     */
+
     public function logout(Request $request)
     {
         auth()->user()->token()->revoke();
@@ -78,39 +140,6 @@ class UserController extends Controller
             'message' => 'user logged out',
         ]);
     }
-
-
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
-    }
-
+    
 
 }
