@@ -140,6 +140,6 @@ class UserController extends Controller
             'message' => 'user logged out',
         ]);
     }
-    
+
 
 }

@@ -129,6 +129,12 @@
       <excludeFolder url="file://$MODULE_DIR$/authentification_api/vendor/nette/utils" />
       <excludeFolder url="file://$MODULE_DIR$/authentification_api/vendor/nette/schema" />
       <excludeFolder url="file://$MODULE_DIR$/authentification_api/vendor/brick/math" />
+      <excludeFolder url="file://$MODULE_DIR$/authentification_api/vendor/swagger-api/swagger-ui" />
+      <excludeFolder url="file://$MODULE_DIR$/authentification_api/vendor/zircote/swagger-php" />
+      <excludeFolder url="file://$MODULE_DIR$/authentification_api/vendor/doctrine/annotations" />
+      <excludeFolder url="file://$MODULE_DIR$/authentification_api/vendor/psr/cache" />
+      <excludeFolder url="file://$MODULE_DIR$/authentification_api/vendor/darkaonline/l5-swagger" />
+      <excludeFolder url="file://$MODULE_DIR$/authentification_api/vendor/tymon/jwt-auth" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

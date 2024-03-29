@@ -129,6 +129,12 @@
       <path value="$PROJECT_DIR$/authentification_api/vendor/nette/utils" />
       <path value="$PROJECT_DIR$/authentification_api/vendor/nette/schema" />
       <path value="$PROJECT_DIR$/authentification_api/vendor/brick/math" />
+      <path value="$PROJECT_DIR$/authentification_api/vendor/swagger-api/swagger-ui" />
+      <path value="$PROJECT_DIR$/authentification_api/vendor/zircote/swagger-php" />
+      <path value="$PROJECT_DIR$/authentification_api/vendor/doctrine/annotations" />
+      <path value="$PROJECT_DIR$/authentification_api/vendor/psr/cache" />
+      <path value="$PROJECT_DIR$/authentification_api/vendor/darkaonline/l5-swagger" />
+      <path value="$PROJECT_DIR$/authentification_api/vendor/tymon/jwt-auth" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="8.1" />

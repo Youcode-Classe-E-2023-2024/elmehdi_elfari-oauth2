@@ -55,28 +55,20 @@ class roleController extends Controller
      *     summary="Delete roles",
      *     tags={"Roles"},
      *     @OA\Parameter(
-     *         name="delete roles",
-     *         in="query",
-     *         description="as admin, i can delete roles",
+     *         name="id",
+     *         in="path",
+     *         description="ID of the permission to delete",
      *         required=true,
-     *         @OA\Schema(type="string")
-     *     ),
-     *     @OA\Parameter(
-     *         name="criteria",
-     *         in="query",
-     *         description="Some optional other parameter",
-     *         required=false,
-     *         @OA\Schema(type="string")
+     *         @OA\Schema(type="integer")
      *     ),
      *     @OA\Response(
-     *         response="200",
-     *         description="Returns some sample category things",
-     *         @OA\JsonContent()
+     *         response=200,
+     *         description="Permission deleted successfully"
      *     ),
      *     @OA\Response(
-     *         response="400",
-     *         description="Error: Bad request. When required parameters were not supplied.",
-     *     ),
+     *         response=404,
+     *         description="Permission not found"
+*     )
      * )
      */
 
@@ -125,6 +117,7 @@ class roleController extends Controller
 
     public function showRoles()
     {
+        $this->authorize('viewAny', Role::class);
         $roles = Role::all();
         return response()->json(['message' => 'Liste des rôles', 'roles' => $roles], 200);
     }

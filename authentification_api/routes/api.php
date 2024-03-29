@@ -31,7 +31,9 @@ Route::middleware('auth:api')->group(function () {
 });
 
 /* CREATE USER*/
-Route::post('/users', [userController::class, 'CreateUser']);
+Route::post('/users', [userController::class, 'addUser']);
+Route::put('/users/{id}', [userController::class, 'editUser']);
+Route::delete('/users/{id}', [userController::class, 'deleteUser']);
 
 /*ROLE*/
 Route::get('/roles', [RoleController::class, 'showRoles']);
@@ -46,3 +48,9 @@ Route::get('/permissions', [permissionController::class, 'showPermissions']);
 Route::post('/permissions', [permissionController::class, 'addPermission']);
 
 Route::delete('/permissions/{id}', [permissionController::class, 'deletePermission']);
+
+
+
+Route::post('/forgotPassword', [userController::class, 'forgotPassword']);
+Route::get('/mot-de-passe/reinitialiser/{token}', [userController::class, 'showResetForm'])->name('password.reset');
+Route::post('/mot-de-passe/reset/', [userController::class, 'reset']);
